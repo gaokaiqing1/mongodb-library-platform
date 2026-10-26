@@ -1,0 +1,157 @@
+=== TASK 3: QUERIES (original library data, read only) ===
+
+[Q1] price > 80 | count=7
+{"title":"Python编程：从入门到实践","price":89}
+{"title":"深入理解计算机系统（原书第3版）","price":139}
+{"title":"JavaScript高级程序设计（第4版）","price":109}
+{"title":"平凡的世界（全三部）","price":98}
+{"title":"经济学原理（第7版）","price":128}
+{"title":"公司理财","price":89}
+{"title":"牛津英语用法指南","price":118}
+
+[Q2] stock < 10 | count=8
+{"title":"深入理解计算机系统（原书第3版）","stock":8}
+{"title":"数据结构（C语言版）","stock":0}
+{"title":"平凡的世界（全三部）","stock":9}
+{"title":"飘","stock":5}
+{"title":"创业企业管理","stock":6}
+{"title":"哥德尔证明","stock":4}
+{"title":"牛津英语用法指南","stock":3}
+{"title":"数据结构基础教程（第二版）","stock":7}
+
+[Q3] ISBN exact match | count=1
+{"isbn":"9787115428028","title":"Python编程：从入门到实践"}
+
+[Q4] email null / absent | count=3
+{"card_no":"R20240004","name":"刘洋","email":null}
+{"card_no":"R20240008","name":"周涛","email":null}
+{"card_no":"R20240011","name":"冯雪","email":null}
+
+[Q5] publisher != 人民邮电出版社 | count=16
+{"title":"深入理解计算机系统（原书第3版）","publisher":"电子工业出版社"}
+{"title":"数据结构（C语言版）","publisher":"清华大学出版社"}
+{"title":"活着","publisher":"作家出版社"}
+{"title":"红楼梦","publisher":"人民文学出版社"}
+{"title":"平凡的世界（全三部）","publisher":"北京十月文艺出版社"}
+{"title":"百年孤独（精装）","publisher":"南海出版公司"}
+{"title":"飘","publisher":"译林出版社"}
+{"title":"经济学原理（第7版）","publisher":"北京大学出版社"}
+{"title":"公司理财","publisher":"中国人民大学出版社"}
+{"title":"创业企业管理","publisher":"北京大学出版社"}
+{"title":"数学之美","publisher":"高等教育出版社"}
+{"title":"哥德尔证明","publisher":"中国人民大学出版社"}
+{"title":"英语语法新思维","publisher":"北京大学出版社"}
+{"title":"牛津英语用法指南","publisher":"外语教学与研究出版社"}
+{"title":"设计模式：可复用面向对象软件的基础","publisher":"电子工业出版社"}
+{"title":"数据结构基础教程（第二版）","publisher":"清华大学出版社"}
+
+[Q6] computer or management | count=10
+{"title":"Python编程：从入门到实践","category":"计算机"}
+{"title":"深入理解计算机系统（原书第3版）","category":"计算机"}
+{"title":"算法图解","category":"计算机"}
+{"title":"数据结构（C语言版）","category":"计算机"}
+{"title":"JavaScript高级程序设计（第4版）","category":"计算机"}
+{"title":"经济学原理（第7版）","category":"经济管理"}
+{"title":"公司理财","category":"经济管理"}
+{"title":"创业企业管理","category":"经济管理"}
+{"title":"设计模式：可复用面向对象软件的基础","category":"计算机"}
+{"title":"数据结构基础教程（第二版）","category":"计算机"}
+
+[Q7] computer rating > 4.0 | count=7
+{"title":"Python编程：从入门到实践","rating":4.6}
+{"title":"深入理解计算机系统（原书第3版）","rating":4.8}
+{"title":"算法图解","rating":4.5}
+{"title":"数据结构（C语言版）","rating":4.3}
+{"title":"JavaScript高级程序设计（第4版）","rating":4.4}
+{"title":"设计模式：可复用面向对象软件的基础","rating":4.7}
+{"title":"数据结构基础教程（第二版）","rating":4.2}
+
+[Q8] rating < 3.5 or zero stock | count=1
+{"title":"数据结构（C语言版）","stock":0,"rating":4.3}
+
+[Q9] title regex Python | count=1
+{"title":"Python编程：从入门到实践"}
+
+[Q10] tags contain both 编程 and 入门 | count=1
+{"title":"Python编程：从入门到实践","tags":["编程","入门","Python"]}
+
+[Q11] tags exact size 3 | count=12
+{"title":"Python编程：从入门到实践","tags":["编程","入门","Python"]}
+{"title":"深入理解计算机系统（原书第3版）","tags":["计算机","体系结构","进阶"]}
+{"title":"算法图解","tags":["算法","入门","图解"]}
+{"title":"JavaScript高级程序设计（第4版）","tags":["JavaScript","前端","进阶"]}
+{"title":"活着","tags":["文学","小说","经典"]}
+{"title":"红楼梦","tags":["文学","古典","小说"]}
+{"title":"平凡的世界（全三部）","tags":["文学","小说","经典"]}
+{"title":"经济学原理（第7版）","tags":["经济学","教材","入门"]}
+{"title":"费马大定理","tags":["数学","科普","经典"]}
+{"title":"英语语法新思维","tags":["英语","语法","教材"]}
+{"title":"牛津英语用法指南","tags":["英语","词典","工具书"]}
+{"title":"设计模式：可复用面向对象软件的基础","tags":["编程","设计模式","进阶"]}
+
+[Q12] tags exists | count=17
+{"title":"Python编程：从入门到实践"}
+{"title":"深入理解计算机系统（原书第3版）"}
+{"title":"算法图解"}
+{"title":"数据结构（C语言版）"}
+{"title":"JavaScript高级程序设计（第4版）"}
+{"title":"活着"}
+{"title":"红楼梦"}
+{"title":"平凡的世界（全三部）"}
+{"title":"经济学原理（第7版）"}
+{"title":"公司理财"}
+{"title":"创业企业管理"}
+{"title":"费马大定理"}
+{"title":"数学之美"}
+{"title":"英语语法新思维"}
+{"title":"牛津英语用法指南"}
+{"title":"设计模式：可复用面向对象软件的基础"}
+{"title":"数据结构基础教程（第二版）"}
+
+[Q13] _id is string | count=1
+{"_id":"ISBN-OLD-0001","title":"数据结构基础教程（第二版）"}
+
+[Q14] rating TOP 5 | count=5
+{"title":"活着","rating":4.9}
+{"title":"深入理解计算机系统（原书第3版）","rating":4.8}
+{"title":"哥德尔证明","rating":4.8}
+{"title":"平凡的世界（全三部）","rating":4.8}
+{"title":"红楼梦","rating":4.7}
+
+[Q15] projection title price rating | count=20
+{"title":"Python编程：从入门到实践","price":89,"rating":4.6}
+{"title":"深入理解计算机系统（原书第3版）","price":139,"rating":4.8}
+{"title":"算法图解","price":49,"rating":4.5}
+{"title":"数据结构（C语言版）","price":39,"rating":4.3}
+{"title":"JavaScript高级程序设计（第4版）","price":109,"rating":4.4}
+{"title":"活着","price":28,"rating":4.9}
+{"title":"红楼梦","price":59.7,"rating":4.7}
+{"title":"平凡的世界（全三部）","price":98,"rating":4.8}
+{"title":"百年孤独（精装）","price":55,"rating":4.6}
+{"title":"飘","price":68,"rating":4.5}
+{"title":"经济学原理（第7版）","price":128,"rating":4.4}
+{"title":"公司理财","price":89,"rating":4.2}
+{"title":"创业企业管理","price":59,"rating":4}
+{"title":"费马大定理","price":45,"rating":4.7}
+{"title":"数学之美","price":36,"rating":4.5}
+{"title":"哥德尔证明","price":48,"rating":4.8}
+{"title":"英语语法新思维","price":52,"rating":4.1}
+{"title":"牛津英语用法指南","price":118,"rating":4.6}
+{"title":"设计模式：可复用面向对象软件的基础","price":79,"rating":4.7}
+{"title":"数据结构基础教程（第二版）","price":45,"rating":4.2}
+
+[Q16] distinct category | count=5
+[
+  '外语',
+  '数学',
+  '文学',
+  '经济管理',
+  '计算机'
+]
+
+=== BASELINE COUNTS ===
+{
+  books: 20,
+  readers: 16,
+  borrow_logs: 66
+}

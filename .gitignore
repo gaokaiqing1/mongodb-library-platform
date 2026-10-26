@@ -1,0 +1,23 @@
+# Python缓存与虚拟环境
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+
+# 数据库存储文件与日志
+mongodb_data/
+logs/
+*.log
+*.pid
+
+# 编辑器缓存与临时文件
+.vscode/
+.idea/
+~$*
+*.tmp
+
+# Windows临时文件
+Thumbs.db
+Desktop.ini

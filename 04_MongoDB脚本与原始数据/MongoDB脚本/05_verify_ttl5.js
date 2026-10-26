@@ -1,0 +1,10 @@
+const d=db.getSiblingDB('library');
+const info=d.getCollectionInfos({name:'borrow_logs'})[0];
+const expected=157680000;
+const counts={books:d.books.countDocuments({}),readers:d.readers.countDocuments({}),borrow_logs:d.borrow_logs.countDocuments({}),category_stats:d.category_stats.countDocuments({}),book_in_stock:d.book_in_stock.countDocuments({})};
+const years=d.borrow_logs.aggregate([{$group:{_id:{$year:{date:'$borrow_date',timezone:'Asia/Shanghai'}},count:{$sum:1}}},{$sort:{_id:1}}]).toArray();
+print('TTL='+info?.options?.expireAfterSeconds+' TYPE='+info?.type);
+print('COUNTS '+EJSON.stringify(counts));
+print('YEARS '+EJSON.stringify(years));
+if(info?.type!=='timeseries'||Number(info.options.expireAfterSeconds)!==expected||counts.books!==20||counts.readers!==16||counts.borrow_logs!==66||counts.category_stats!==5||counts.book_in_stock!==19||JSON.stringify(years.map(x=>[x._id,x.count]))!==JSON.stringify([[2023,20],[2024,28],[2025,18]])) throw Error('CHECK REQUIRED: verify actual database against expected values');
+print('PASS TTL5 + BASELINE + YEARLY COUNTS');

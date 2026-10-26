@@ -1,0 +1,35 @@
+[{
+  "_id": "计算机",
+  "book_count": 7,
+  "avg_rating": 4.5,
+  "min_stock": 0,
+  "max_stock": 22
+},
+{
+  "_id": "文学",
+  "book_count": 5,
+  "avg_rating": 4.7,
+  "min_stock": 5,
+  "max_stock": 32
+},
+{
+  "_id": "数学",
+  "book_count": 3,
+  "avg_rating": 4.666666666666667,
+  "min_stock": 4,
+  "max_stock": 25
+},
+{
+  "_id": "经济管理",
+  "book_count": 3,
+  "avg_rating": 4.2,
+  "min_stock": 6,
+  "max_stock": 14
+},
+{
+  "_id": "外语",
+  "book_count": 2,
+  "avg_rating": 4.35,
+  "min_stock": 3,
+  "max_stock": 16
+}]

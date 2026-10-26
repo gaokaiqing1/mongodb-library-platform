@@ -1,0 +1,118 @@
+ORIGINAL BASELINE
+{
+  books: 20,
+  readers: 16,
+  borrow_logs: 66
+}
+
+[A1] 分类数及平均评分
+rows=5
+{"_id":"计算机","book_count":7,"avg_rating":4.5,"min_stock":0,"max_stock":22}
+{"_id":"文学","book_count":5,"avg_rating":4.7,"min_stock":5,"max_stock":32}
+{"_id":"数学","book_count":3,"avg_rating":4.666666666666667,"min_stock":4,"max_stock":25}
+{"_id":"经济管理","book_count":3,"avg_rating":4.2,"min_stock":6,"max_stock":14}
+{"_id":"外语","book_count":2,"avg_rating":4.35,"min_stock":3,"max_stock":16}
+
+[A2] 出版社TOP5，group + topN
+rows=1
+{"top_publishers":[{"publisher":"人民邮电出版社","count":4},{"publisher":"北京大学出版社","count":3},{"publisher":"中国人民大学出版社","count":2},{"publisher":"清华大学出版社","count":2},{"publisher":"电子工业出版社","count":2}]}
+
+[A3] 各类别图书数量
+rows=5
+{"_id":"计算机","count":7}
+{"_id":"文学","count":5}
+{"_id":"经济管理","count":3}
+{"_id":"数学","count":3}
+{"_id":"外语","count":2}
+
+[A4] 最高评分三书
+rows=3
+{"title":"活着","rating":4.9,"borrow_count":243}
+{"title":"深入理解计算机系统（原书第3版）","rating":4.8,"borrow_count":156}
+{"title":"哥德尔证明","rating":4.8,"borrow_count":61}
+
+[A5] 价格×累计借阅次数（教学计算指标，非真实销售额）
+rows=20
+{"title":"深入理解计算机系统（原书第3版）","estimated_amount":21684}
+{"title":"平凡的世界（全三部）","estimated_amount":16366}
+{"title":"经济学原理（第7版）","estimated_amount":15104}
+{"title":"JavaScript高级程序设计（第4版）","estimated_amount":14606}
+{"title":"设计模式：可复用面向对象软件的基础","estimated_amount":13509}
+{"title":"Python编程：从入门到实践","estimated_amount":11303}
+{"title":"红楼梦","estimated_amount":11283.3}
+{"title":"数据结构（C语言版）","estimated_amount":7917}
+{"title":"百年孤独（精装）","estimated_amount":7810}
+{"title":"公司理财","estimated_amount":7743}
+{"title":"活着","estimated_amount":6804}
+{"title":"数学之美","estimated_amount":5688}
+{"title":"飘","estimated_amount":5168}
+{"title":"算法图解","estimated_amount":4802}
+{"title":"牛津英语用法指南","estimated_amount":4602}
+{"title":"英语语法新思维","estimated_amount":4368}
+{"title":"费马大定理","estimated_amount":4140}
+{"title":"数据结构基础教程（第二版）","estimated_amount":3960}
+{"title":"哥德尔证明","estimated_amount":2928}
+{"title":"创业企业管理","estimated_amount":2655}
+
+[A6] 按年统计借阅（日期从 $date 导入成 BSON Date）
+rows=3
+{"count":20,"year":"2023年"}
+{"count":28,"year":"2024年"}
+{"count":18,"year":"2025年"}
+
+[A7] 借阅最多读者TOP5
+rows=5
+{"_id":"R20240001","borrow_total":5}
+{"_id":"R20240006","borrow_total":5}
+{"_id":"R20240002","borrow_total":4}
+{"_id":"R20240003","borrow_total":4}
+{"_id":"R20240004","borrow_total":4}
+
+[A8] 联合读者表按学院统计借阅量
+rows=6
+{"_id":"计算机学院","borrow_total":17}
+{"_id":"文学院","borrow_total":13}
+{"_id":"数学与统计学院","borrow_total":12}
+{"_id":"外国语学院","borrow_total":8}
+{"_id":"管理学院","borrow_total":8}
+{"_id":"经济管理学院","borrow_total":8}
+
+[A9] merge A1 into category_stats
+category_stats=5
+[
+  {
+    _id: '外语',
+    book_count: 2,
+    avg_rating: 4.35,
+    min_stock: 3,
+    max_stock: 16
+  },
+  {
+    _id: '数学',
+    book_count: 3,
+    avg_rating: 4.666666666666667,
+    min_stock: 4,
+    max_stock: 25
+  },
+  {
+    _id: '文学',
+    book_count: 5,
+    avg_rating: 4.7,
+    min_stock: 5,
+    max_stock: 32
+  },
+  {
+    _id: '经济管理',
+    book_count: 3,
+    avg_rating: 4.2,
+    min_stock: 6,
+    max_stock: 14
+  },
+  {
+    _id: '计算机',
+    book_count: 7,
+    avg_rating: 4.5,
+    min_stock: 0,
+    max_stock: 22
+  }
+]

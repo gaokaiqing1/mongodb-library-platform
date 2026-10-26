@@ -1,0 +1,2 @@
+Current Mongosh Log ID:	6ad17fb4d0d734df8c4412da
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/library?directConnection=true&serverSelectionTimeoutMS=2000&authSource=library&appName=mongosh+2.12.0

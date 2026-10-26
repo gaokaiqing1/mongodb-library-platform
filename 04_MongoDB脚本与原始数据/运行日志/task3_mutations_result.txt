@@ -1,0 +1,117 @@
+=== CREATE FRESH TASK3 ISOLATED COPIES ===
+COPY books count=20
+COPY readers count=16
+COPY borrow_logs_ops count=66
+
+[U1] 减少库存5（选择stock=15的Python书）
+U1
+{
+  matchedCount: 1,
+  modifiedCount: 1,
+  deletedCount: undefined
+}
+{
+  title: 'Python编程：从入门到实践',
+  stock: 10
+}
+
+[U2] 数学类价格打九折
+U2
+{
+  matchedCount: 3,
+  modifiedCount: 3,
+  deletedCount: undefined
+}
+[
+  {
+    title: '费马大定理',
+    price: 40.5
+  },
+  {
+    title: '数学之美',
+    price: 32.4
+  },
+  {
+    title: '哥德尔证明',
+    price: 43.2
+  }
+]
+
+[U3] currentDate字段
+U3
+{
+  matchedCount: 1,
+  modifiedCount: 1,
+  deletedCount: undefined
+}
+{
+  title: 'Python编程：从入门到实践',
+  last_modified: ISODate('2026-10-14T03:08:55.477Z')
+}
+
+[U4] unset tags
+U4
+{
+  matchedCount: 1,
+  modifiedCount: 1,
+  deletedCount: undefined
+}
+{
+  title: 'Python编程：从入门到实践'
+}
+
+[D1] on ordinary copy because deleteOne is not supported for time-series collections
+preview:
+{
+  _id: ObjectId('6aced9bf9bf6965a0bad82db'),
+  borrow_date: ISODate('2023-01-08T07:27:00.000Z'),
+  status: '已归还',
+  reader_card: 'R20240010',
+  book_isbn: '9787020042033',
+  return_date: ISODate('2023-02-23T01:51:00.000Z')
+}
+D1
+{
+  matchedCount: undefined,
+  modifiedCount: undefined,
+  deletedCount: 1
+}
+
+[D2] Preview status=逾期 and return_date missing (actual overdue unpaid definition)
+preview-count=0
+[]
+D2
+{
+  matchedCount: undefined,
+  modifiedCount: undefined,
+  deletedCount: 0
+}
+note: supplied dataset overdue entries have return_date; expected 0 deleted
+
+[D3] replace reader while retaining _id
+D3
+{
+  matchedCount: 1,
+  modifiedCount: 1,
+  deletedCount: undefined
+}
+{
+  _id: ObjectId('6aced9bf9bf6965a0bad82b6'),
+  card_no: 'R20240001',
+  name: '张明',
+  phone: '13800138099',
+  level: '高级'
+}
+
+ISOLATED COUNTS
+{
+  books: 20,
+  readers: 16,
+  borrow_logs_ops: 65
+}
+ORIGINAL COUNTS
+{
+  books: 20,
+  readers: 16,
+  borrow_logs: 66
+}

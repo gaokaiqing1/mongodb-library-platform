@@ -1,0 +1,124 @@
+=== explain BEFORE new indexes ===
+{
+  winningPlan: {
+    isCached: false,
+    stage: 'COLLSCAN',
+    filter: {
+      '$and': [
+        {
+          category: {
+            '$eq': '计算机'
+          }
+        },
+        {
+          price: {
+            '$gt': 50
+          }
+        }
+      ]
+    },
+    nss: 'library.books',
+    direction: 'forward'
+  },
+  executionStats: {
+    nReturned: 4,
+    totalDocsExamined: 20,
+    executionTimeMillis: 0
+  }
+}
+=== create I1-I5 ===
+I1=idx_isbn_unique
+I2=idx_title
+I3=idx_category
+I4=idx_tags
+I5=idx_category_price
+INDEX LIST
+[
+  {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  },
+  {
+    v: 2,
+    key: {
+      isbn: 1
+    },
+    name: 'idx_isbn_unique',
+    unique: true
+  },
+  {
+    v: 2,
+    key: {
+      title: 1
+    },
+    name: 'idx_title'
+  },
+  {
+    v: 2,
+    key: {
+      category: 1
+    },
+    name: 'idx_category'
+  },
+  {
+    v: 2,
+    key: {
+      tags: 1
+    },
+    name: 'idx_tags'
+  },
+  {
+    v: 2,
+    key: {
+      category: 1,
+      price: 1
+    },
+    name: 'idx_category_price'
+  }
+]
+=== explain AFTER (index hint to display planned path; compare docs examined) ===
+{
+  winningPlan: {
+    isCached: false,
+    stage: 'FETCH',
+    nss: 'library.books',
+    inputStage: {
+      stage: 'IXSCAN',
+      nss: 'library.books',
+      keyPattern: {
+        category: 1,
+        price: 1
+      },
+      indexName: 'idx_category_price',
+      isMultiKey: false,
+      multiKeyPaths: {
+        category: [],
+        price: []
+      },
+      isUnique: false,
+      isSparse: false,
+      isPartial: false,
+      indexVersion: 2,
+      direction: 'forward',
+      indexBounds: {
+        category: [
+          '["计算机", "计算机"]'
+        ],
+        price: [
+          '(50, inf]'
+        ]
+      }
+    }
+  },
+  executionStats: {
+    nReturned: 4,
+    totalDocsExamined: 4,
+    executionTimeMillis: 1
+  }
+}
+=== I1 DUPLICATE ISBN TEST ===
+EXPECTED duplicate key rejection: 11000 undefined
+books count=20
